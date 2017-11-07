@@ -852,16 +852,18 @@ let visited = selector(":visited");
 
 let link = selector(":link");
 
-let firstChild = selector(":firstChild");
+let firstChild = selector(":first-child");
 
-let firstOfType = selector(":firstOfType");
+let firstOfType = selector(":first-of-type");
 
-let lastChild = selector(":lastChild");
+let lastChild = selector(":last-child");
 
-let lastOfType = selector(":lastOfType");
+let lastOfType = selector(":last-of-type");
 
 /* MEDIA */
 let media = (query, rules) => Selector("@media " ++ query, rules);
+
+let child = (rules) => Selector(" > *", rules);
 
 /* MISC */
 type cursor =

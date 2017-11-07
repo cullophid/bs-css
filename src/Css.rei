@@ -515,6 +515,10 @@ let lastOfType: list(rule) => rule;
 
 let media: (string, list(rule)) => rule;
 
+let child: list(rule) => rule;
+
+let lastChild: list(rule) => rule;
+
 /* MISC */
 type cursor =
   | Auto
