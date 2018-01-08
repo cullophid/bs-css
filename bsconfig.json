@@ -12,7 +12,8 @@
     "-warn-error",
     "-a+8"
   ],
-  "sources": [{
+  "sources": [
+    {
       "dir": "src"
     },
     {
