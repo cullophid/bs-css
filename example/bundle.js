@@ -3550,39 +3550,57 @@ var Glamor     = __webpack_require__(33);
 var Layout     = __webpack_require__(32);
 var ReactDOMRe = __webpack_require__(70);
 
-var box = Glamor.ruleset(/* :: */[
-      Glamor.rule("background", "darkgray"),
-      /* :: */[
-        Glamor.rule("width", "50px"),
-        /* :: */[
-          Glamor.rule("height", "50px"),
+var box = Layout.column(/* None */0, /* None */0, /* Some */[Layout.px(40)], /* Some */[Layout.px(40)], /* None */0, Glamor.ruleset(/* :: */[
+          Glamor.rule("background", "darkgray"),
           /* [] */0
-        ]
+        ]));
+
+var header = Glamor.ruleset(/* :: */[
+      Glamor.rule("background", "white"),
+      /* :: */[
+        Glamor.rule("boxShadow", " 1px 0  5px rgba(0, 0, 0, 0.5)"),
+        /* [] */0
       ]
     ]);
 
-var header = Glamor.ruleset(/* :: */[
-      Glamor.rule("background", "black"),
+var sidebar = Glamor.ruleset(/* :: */[
+      Glamor.rule("background", "#333"),
       /* [] */0
     ]);
 
 function view() {
   return React.createElement("div", {
-              className: Layout.row(/* Some */[Layout.px(10)], Layout.auto, header)
+              className: Layout.column(/* None */0, /* None */0, /* Some */[Layout.fill], /* Some */[Layout.fill], /* None */0, Layout.empty)
             }, React.createElement("div", {
-                  className: box
-                }), React.createElement("div", {
-                  className: box
-                }), React.createElement("div", {
-                  className: box
-                }));
+                  className: Layout.row(/* Some */[Layout.px(10)], /* Some */[Layout.auto], /* Some */[Layout.fill], /* Some */[Layout.px(60)], /* None */0, header)
+                }, React.createElement("div", {
+                      className: Layout.column(/* None */0, /* None */0, /* Some */[Layout.px(40)], /* Some */[Layout.px(40)], /* None */0, Glamor.ruleset(/* :: */[
+                                Glamor.rule("background", "palegoldenrod"),
+                                /* [] */0
+                              ]))
+                    }), React.createElement("div", {
+                      className: Layout.row(/* None */0, /* Some */[Layout.px(15)], /* Some */[Layout.auto], /* None */0, /* None */0, Layout.empty)
+                    }, React.createElement("div", {
+                          className: box
+                        }), React.createElement("div", {
+                          className: box
+                        }), React.createElement("div", {
+                          className: box
+                        }))), React.createElement("div", {
+                  className: Layout.row(/* None */0, /* None */0, /* None */0, /* Some */[Layout.fill], /* None */0, Layout.empty)
+                }, React.createElement("aside", {
+                      className: Layout.column(/* None */0, /* None */0, /* Some */[Layout.px(250)], /* Some */[Layout.fill], /* None */0, sidebar)
+                    }), React.createElement("main", {
+                      className: Layout.column(/* None */0, /* None */0, /* None */0, /* Some */[Layout.fill], /* None */0, Layout.empty)
+                    })));
 }
 
 ReactDOMRe.renderToElementWithId(view(/* () */0), "app");
 
-exports.box    = box;
-exports.header = header;
-exports.view   = view;
+exports.box     = box;
+exports.header  = header;
+exports.sidebar = sidebar;
+exports.view    = view;
 /* box Not a pure module */
 
 
@@ -4996,89 +5014,284 @@ module.exports = ReactPropTypesSecret;
 var Curry  = __webpack_require__(5);
 var Glamor = __webpack_require__(33);
 
-function px(i) {
-  return "" + (String(i) + "px");
+function toString(param) {
+  if (typeof param === "number") {
+    if (param >= -445061397) {
+      if (param >= 5793429) {
+        if (param >= 98248149) {
+          return "center";
+        } else {
+          return "top";
+        }
+      } else if (param >= -379319332) {
+        return "right";
+      } else {
+        return "bottom";
+      }
+    } else if (param !== -1011102077) {
+      if (param >= -944764921) {
+        return "left";
+      } else {
+        return "auto";
+      }
+    } else {
+      return "100%";
+    }
+  } else if (param[0] >= 5591841) {
+    return "" + (String(param[1]) + "% ");
+  } else {
+    return "" + (String(param[1]) + "px");
+  }
 }
 
-var zero = "0";
+function px(i) {
+  return /* `px */[
+          25096,
+          i
+        ];
+}
 
 function pct(i) {
-  return "" + (String(i) + "%");
+  return /* `pct */[
+          5591841,
+          i
+        ];
 }
 
-function row($staropt$star, spacing, style) {
+var zero = /* `px */[
+  25096,
+  0
+];
+
+function row($staropt$star, $staropt$star$1, $staropt$star$2, $staropt$star$3, $staropt$star$4, style) {
   var padding = $staropt$star ? $staropt$star[0] : zero;
-  var tmp = spacing === "auto" ? Glamor.rule("justifyContent", "space-between") : Glamor.selector("& > *", /* :: */[
-          Glamor.rule("marginRight", spacing),
-          /* :: */[
-            Glamor.selector("&:last-child", /* :: */[
-                  Glamor.rule("marginRight", "0"),
-                  /* [] */0
-                ]),
-            /* [] */0
-          ]
-        ]);
+  var spacing = $staropt$star$1 ? $staropt$star$1[0] : zero;
+  var width = $staropt$star$2 ? $staropt$star$2[0] : /* auto */-1065951377;
+  var height = $staropt$star$3 ? $staropt$star$3[0] : /* auto */-1065951377;
+  var match = $staropt$star$4 ? $staropt$star$4[0] : /* tuple */[
+      /* top */5793429,
+      /* left */-944764921
+    ];
+  var alignX = match[1];
+  var alignY = match[0];
   var css = Curry._1(Glamor.mergeRuleset, /* :: */[
         Glamor.ruleset(/* :: */[
-              Glamor.rule("display", "flex"),
+              Glamor.rule("boxSizing", "border-box"),
               /* :: */[
-                Glamor.rule("flexDirection", "row"),
+                Glamor.rule("display", "flex"),
                 /* :: */[
-                  Glamor.rule("padding", padding),
+                  Glamor.rule("flexDirection", "row"),
                   /* :: */[
-                    tmp,
-                    /* [] */0
+                    Glamor.rule("padding", toString(padding)),
+                    /* :: */[
+                      Glamor.rule("justifyContent", alignX !== -379319332 ? (
+                              alignX >= 98248149 ? "center" : "flex-start"
+                            ) : "flex-end"),
+                      /* :: */[
+                        Glamor.rule("alignItems", alignY !== 5793429 ? (
+                                alignY >= 98248149 ? "center" : "flex-end"
+                              ) : "flex-start"),
+                        /* :: */[
+                          spacing !== -1065951377 ? Glamor.selector("& > *", /* :: */[
+                                  Glamor.rule("marginRight", toString(spacing)),
+                                  /* :: */[
+                                    Glamor.selector("&:last-child", /* :: */[
+                                          Glamor.rule("marginRight", "0"),
+                                          /* [] */0
+                                        ]),
+                                    /* [] */0
+                                  ]
+                                ]) : Glamor.rule("justifyContent", "space-between"),
+                          /* [] */0
+                        ]
+                      ]
+                    ]
                   ]
                 ]
               ]
             ]),
         /* :: */[
-          style,
-          /* [] */0
+          width !== -1065951377 ? (
+              width !== -1011102077 ? Glamor.ruleset(/* :: */[
+                      Glamor.rule("width", toString(width)),
+                      /* [] */0
+                    ]) : Glamor.ruleset(/* :: */[
+                      Glamor.rule("width", "100%"),
+                      /* :: */[
+                        Glamor.selector(".row-layout > &", /* :: */[
+                              Glamor.rule("flex", "1"),
+                              /* [] */0
+                            ]),
+                        /* :: */[
+                          Glamor.selector(".column-layout > &", /* :: */[
+                                Glamor.rule("alignSelf", "stretch"),
+                                /* [] */0
+                              ]),
+                          /* [] */0
+                        ]
+                      ]
+                    ])
+            ) : Glamor.ruleset(/* :: */[
+                  Glamor.rule("width", "auto"),
+                  /* [] */0
+                ]),
+          /* :: */[
+            height !== -1065951377 ? (
+                height !== -1011102077 ? Glamor.ruleset(/* :: */[
+                        Glamor.rule("height", toString(height)),
+                        /* [] */0
+                      ]) : Glamor.ruleset(/* :: */[
+                        Glamor.rule("height", "100%"),
+                        /* :: */[
+                          Glamor.selector(".column-layout > &", /* :: */[
+                                Glamor.rule("flex", "1"),
+                                /* [] */0
+                              ]),
+                          /* :: */[
+                            Glamor.selector(".row-layout > &", /* :: */[
+                                  Glamor.rule("alignSelf", "stretch"),
+                                  /* [] */0
+                                ]),
+                            /* [] */0
+                          ]
+                        ]
+                      ])
+              ) : Glamor.ruleset(/* :: */[
+                    Glamor.rule("height", "auto"),
+                    /* [] */0
+                  ]),
+            /* :: */[
+              style,
+              /* [] */0
+            ]
+          ]
         ]
       ]);
   return "" + (String(css) + " row-layout");
 }
 
-function column($staropt$star, spacing, style) {
+function column($staropt$star, $staropt$star$1, $staropt$star$2, $staropt$star$3, $staropt$star$4, style) {
   var padding = $staropt$star ? $staropt$star[0] : zero;
-  var tmp = spacing === "auto" ? Glamor.rule("justifyContent", "space-between") : Glamor.selector("& > *", /* :: */[
-          Glamor.rule("marginBottom", spacing),
-          /* :: */[
-            Glamor.selector("&:last-child", /* :: */[
-                  Glamor.rule("marginBottom", "0"),
-                  /* [] */0
-                ]),
-            /* [] */0
-          ]
-        ]);
+  var spacing = $staropt$star$1 ? $staropt$star$1[0] : zero;
+  var width = $staropt$star$2 ? $staropt$star$2[0] : /* auto */-1065951377;
+  var height = $staropt$star$3 ? $staropt$star$3[0] : /* auto */-1065951377;
+  var match = $staropt$star$4 ? $staropt$star$4[0] : /* tuple */[
+      /* top */5793429,
+      /* left */-944764921
+    ];
+  var alignX = match[1];
+  var alignY = match[0];
   var css = Curry._1(Glamor.mergeRuleset, /* :: */[
         Glamor.ruleset(/* :: */[
-              Glamor.rule("display", "flex"),
+              Glamor.rule("boxSizing", "border-box"),
               /* :: */[
-                Glamor.rule("flexDirection", "column"),
+                Glamor.rule("display", "flex"),
                 /* :: */[
-                  Glamor.rule("padding", padding),
+                  Glamor.rule("flexDirection", "column"),
                   /* :: */[
-                    tmp,
-                    /* [] */0
+                    Glamor.rule("padding", toString(padding)),
+                    /* :: */[
+                      Glamor.rule("alignItems", alignX !== -379319332 ? (
+                              alignX >= 98248149 ? "center" : "flex-start"
+                            ) : "flex-end"),
+                      /* :: */[
+                        Glamor.rule("justifyContent", alignY !== 5793429 ? (
+                                alignY >= 98248149 ? "center" : "flex-end"
+                              ) : "flex-start"),
+                        /* :: */[
+                          spacing !== -1065951377 ? Glamor.selector("& > *", /* :: */[
+                                  Glamor.rule("marginBottom", toString(spacing)),
+                                  /* :: */[
+                                    Glamor.selector("&:last-child", /* :: */[
+                                          Glamor.rule("marginBottom", "0"),
+                                          /* [] */0
+                                        ]),
+                                    /* [] */0
+                                  ]
+                                ]) : Glamor.rule("justifyContent", "space-between"),
+                          /* [] */0
+                        ]
+                      ]
+                    ]
                   ]
                 ]
               ]
             ]),
         /* :: */[
-          style,
-          /* [] */0
+          width !== -1065951377 ? (
+              width !== -1011102077 ? Glamor.ruleset(/* :: */[
+                      Glamor.rule("width", toString(width)),
+                      /* [] */0
+                    ]) : Glamor.ruleset(/* :: */[
+                      Glamor.rule("width", "100%"),
+                      /* :: */[
+                        Glamor.selector(".row-layout > &", /* :: */[
+                              Glamor.rule("flex", "1"),
+                              /* [] */0
+                            ]),
+                        /* :: */[
+                          Glamor.selector(".column-layout > &", /* :: */[
+                                Glamor.rule("alignSelf", "stretch"),
+                                /* [] */0
+                              ]),
+                          /* [] */0
+                        ]
+                      ]
+                    ])
+            ) : Glamor.ruleset(/* :: */[
+                  Glamor.rule("width", "auto"),
+                  /* [] */0
+                ]),
+          /* :: */[
+            height !== -1065951377 ? (
+                height !== -1011102077 ? Glamor.ruleset(/* :: */[
+                        Glamor.rule("height", toString(height)),
+                        /* [] */0
+                      ]) : Glamor.ruleset(/* :: */[
+                        Glamor.rule("height", "100%"),
+                        /* :: */[
+                          Glamor.selector(".column-layout > &", /* :: */[
+                                Glamor.rule("flex", "1"),
+                                /* [] */0
+                              ]),
+                          /* :: */[
+                            Glamor.selector(".row-layout > &", /* :: */[
+                                  Glamor.rule("alignSelf", "stretch"),
+                                  /* [] */0
+                                ]),
+                            /* [] */0
+                          ]
+                        ]
+                      ])
+              ) : Glamor.ruleset(/* :: */[
+                    Glamor.rule("height", "auto"),
+                    /* [] */0
+                  ]),
+            /* :: */[
+              style,
+              /* [] */0
+            ]
+          ]
         ]
       ]);
-  return "" + (String(css) + " row-layout");
+  return "" + (String(css) + " column-layout");
 }
 
 var empty = Glamor.empty;
 
-var fill = "fill";
+var fill = /* fill */-1011102077;
 
-var auto = "auto";
+var auto = /* auto */-1065951377;
+
+var left = /* left */-944764921;
+
+var right = /* right */-379319332;
+
+var top = /* top */5793429;
+
+var bottom = /* bottom */-445061397;
+
+var center = /* center */98248149;
 
 exports.empty  = empty;
 exports.px     = px;
@@ -5086,8 +5299,13 @@ exports.pct    = pct;
 exports.fill   = fill;
 exports.auto   = auto;
 exports.zero   = zero;
-exports.column = column;
+exports.left   = left;
+exports.right  = right;
+exports.top    = top;
+exports.bottom = bottom;
+exports.center = center;
 exports.row    = row;
+exports.column = column;
 /* Glamor Not a pure module */
 
 

@@ -1,23 +1,43 @@
 let empty: Glamor.css;
 
-type types = [ | `length | `fill | `auto | `color | `url];
+let px: int => [> | `px(int)];
 
-type value('a) = 'a constraint [< types] = 'a;
+let pct: float => [> | `pct(float)];
 
-type size('a) = value(([< | `length | `fill | `auto] as 'a));
+let fill: [> | `fill];
 
-let px: int => value([ | `length]);
+let auto: [> | `auto];
 
-let pct: float => value([ | `length]);
+let zero: [> | `px(int)];
 
-let fill: value([ | `fill]);
+let left: [> | `left];
 
-let auto: value([ | `auto]);
+let right: [> | `right];
 
-let zero: value([ | `length]);
+let top: [> | `top];
 
-let column:
-  (~padding: value([ | `length])=?, ~spacing: value([< | `length | `auto]), Glamor.css) => string;
+let bottom: [> | `bottom];
+
+let center: [> | `center];
 
 let row:
-  (~padding: value([ | `length])=?, ~spacing: value([< | `length | `auto]), Glamor.css) => string;
+  (
+    ~padding: [ | `px(int) | `pct(float)]=?,
+    ~spacing: [ | `px(int) | `auto]=?,
+    ~width: [ | `px(int) | `pct(float) | `auto | `fill]=?,
+    ~height: [ | `px(int) | `pct(float) | `auto | `fill]=?,
+    ~align: ([ | `top | `center | `bottom], [ | `left | `center | `right])=?,
+    Glamor.css
+  ) =>
+  string;
+
+let column:
+  (
+    ~padding: [ | `px(int) | `pct(float)]=?,
+    ~spacing: [ | `px(int) | `auto]=?,
+    ~width: [ | `px(int) | `pct(float) | `auto | `fill]=?,
+    ~height: [ | `px(int) | `pct(float) | `auto | `fill]=?,
+    ~align: ([ | `top | `center | `bottom], [ | `left | `center | `right])=?,
+    Glamor.css
+  ) =>
+  string;
